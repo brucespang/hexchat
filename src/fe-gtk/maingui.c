@@ -2235,16 +2235,13 @@ mg_word_clicked (GtkWidget *xtext, char *word, GdkEventButton *even)
 			return;
 		}
 
-		if ((even->state & 13) == prefs.hex_gui_url_mod)
+		switch (word_type)
 		{
-			switch (word_type)
-			{
-			case WORD_URL:
-			case WORD_HOST6:
-			case WORD_HOST:
-				word[end] = 0;
-				fe_open_url (word + start);
-			}
+		case WORD_URL:
+		case WORD_HOST6:
+		case WORD_HOST:
+			word[end] = 0;
+			fe_open_url (word + start);
 		}
 		return;
 	}
