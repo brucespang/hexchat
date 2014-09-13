@@ -30,6 +30,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 #include "../../config.h"
 #include "../common/hexchat.h"
@@ -1746,7 +1747,8 @@ gtk_xtext_motion_notify (GtkWidget * widget, GdkEventMotion * event)
 		return FALSE;
 	}
 
-	if (xtext->button_down)
+	if (xtext->button_down &&
+	    sqrt(pow(xtext->select_start_x - x, 2) + pow(xtext->select_start_y - y, 2)) >= 5)
 	{
 		redraw = gtk_xtext_check_mark_stamp (xtext, mask);
 		gtk_grab_add (widget);

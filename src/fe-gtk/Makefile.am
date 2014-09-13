@@ -4,6 +4,8 @@ bin_PROGRAMS = hexchat
 
 AM_CPPFLAGS = $(GUI_CFLAGS) -DLOCALEDIR=\"$(localedir)\"
 
+AM_LDFLAGS = -lm
+
 hexchat_LDADD = ../common/libhexchatcommon.a $(GUI_LIBS)
 
 EXTRA_DIST = \
